@@ -15,11 +15,11 @@ function date(req, res) {
         })
 
     } else if (!isNaN(req.params.id)) {
-        var intId = parseInt(req.params.id)
-        var DATE = moment(intId).format('ddd, D MMM YYYY')
+        date = new Date(parseInt(date_string));
+        var DATE = moment(date).format('ddd, D MMM YYYY')
         var formatDate = DATE + " " + '00:00:00 GMT'
         res.json({
-            unix: intId,
+            unix: date.valueOf(),
             utc: formatDate
         })
     } else {
