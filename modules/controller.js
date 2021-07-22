@@ -16,11 +16,11 @@ function date(req, res) {
             error: "Invalid Date"
         })
     } else {
-        // var DATE = moment(date).format('ddd, D MMM YYYY')
-        // var formatDate = DATE + " " + '00:00:00 GMT'
+        var DATE = moment(date).format('ddd, D MMM YYYY')
+        var formatDate = DATE + " " + '00:00:00 GMT'
         res.json({
             unix: date.valueOf(),
-            utc: date.toUTCString(),
+            utc: formatDate,
         });
     }
 }
