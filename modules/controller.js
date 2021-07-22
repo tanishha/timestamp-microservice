@@ -1,10 +1,13 @@
 const moment = require("moment");
 
 function date(req, res) {
-    var parsedDate = Date.parse(req.params.id);
+    let date_string = req.params.date;
+     let date;
 
-    if (isNaN(req.params.id) && !isNaN(parsedDate)) {
-        var DATE = moment(req.params.id).format('ddd, DDDD MMM YYYY')
+    if (parseInt(date_string) < 10000) {
+        date = new Date(date_string);
+
+        var DATE = moment(date).format('ddd, D MMM YYYY')
         var formatDate = DATE + " " + '00:00:00 GMT'
         res.json({
             unix: Math.round((new Date(req.params.id)).getTime()),
