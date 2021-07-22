@@ -1,13 +1,11 @@
 const moment = require("moment");
 
 function date(req, res) {
-    const dateFormat = "YYYY-MM-DD";
-    const toDateFormat = moment(new Date(req.params.id)).format(dateFormat);
-    if (moment(toDateFormat, dateFormat, true).isValid()) {
-        var myDate = new Date(req.params.id)
-        var DATE = moment(myDate).format('ddd, D MMM YYYY')
+    var parsedDate = Date.parse(req.params.id);
+
+    if (isNaN(req.params.id) && !isNaN(parsedDate)) {
+        var DATE = moment(req.params.id).format('ddd, DDDD MMM YYYY')
         var formatDate = DATE + " " + '00:00:00 GMT'
-        console.log("date check",myDate)
         res.json({
             unix: Math.round((new Date(req.params.id)).getTime()),
             utc: formatDate
