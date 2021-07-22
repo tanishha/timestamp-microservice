@@ -1,7 +1,7 @@
 const moment = require("moment");
 
 function date(req, res) {
-    let date_string = req.params.date;
+    let date_string = req.params.id;
      let date;
 
     if (parseInt(date_string) < 10000) {
