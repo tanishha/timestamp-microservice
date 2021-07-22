@@ -12,15 +12,15 @@ function date(req, res) {
 
     }
     if (date == "Invalid Date") {
-        return res.json({
+        res.json({
             error: "Invalid Date"
         })
     } else {
-        var DATE = moment(date).format('ddd, D MMM YYYY')
-        var formatDate = DATE + " " + '00:00:00 GMT'
+        // var DATE = moment(date).format('ddd, D MMM YYYY')
+        // var formatDate = DATE + " " + '00:00:00 GMT'
         res.json({
             unix: date.valueOf(),
-            utc: formatDate,
+            utc: date.toUTCString(),
         });
     }
 }
