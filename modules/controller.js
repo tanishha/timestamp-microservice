@@ -1,5 +1,3 @@
-const moment = require("moment");
-
 function date(req, res) {
     let date_string = req.params.date;
     let date;
@@ -16,11 +14,9 @@ function date(req, res) {
             error: "Invalid Date"
         })
     } else {
-        var DATE = moment(date).format('ddd, D MMM YYYY')
-        var formatDate = DATE + " " + '00:00:00 GMT'
         res.json({
             unix: date.valueOf(),
-            utc: formatDate,
+            utc: date.toUTCString(),
         });
     }
 }
